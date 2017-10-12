@@ -6,12 +6,21 @@ require 'pry-nav'
 
 RSpec.describe HybridBillsController do
 
+<<<<<<< HEAD
 	before(:each) do
 		WebMock.allow_net_connect!
         VCR.turn_off!
     end
 
 	context 'hybrid bill index page' do
+=======
+	before(:each) do 
+		WebMock.allow_net_connect!
+        VCR.turn_off!
+    end    
+
+	context "hybrid bill index page" do 
+>>>>>>> WIP
 			describe 'GET index' do
 			    before(:each) do
 			      get :index
@@ -27,7 +36,11 @@ RSpec.describe HybridBillsController do
 		    end
 	end
 
+<<<<<<< HEAD
 	context 'hybrid bill show page' do
+=======
+	context "hybrid bill show page" do 
+>>>>>>> WIP
 
 			describe 'GET show' do
 			    before(:each) do
@@ -40,6 +53,7 @@ RSpec.describe HybridBillsController do
 
 			    it 'renders the show template' do
 			      expect(response).to render_template('show')
+<<<<<<< HEAD
           end
 
         context 'with a stage' do
@@ -68,12 +82,26 @@ RSpec.describe HybridBillsController do
 			describe '#test' do
 
 				it 'should match the data ' do
+=======
+			    end
+		    end
+	end
+
+	context "hybrid bill test page" do 
+			describe '#test' do	
+			
+				it 'should match the data ' do 
+>>>>>>> WIP
 					data = {
  					 "userId": 1,
   					"id": 1,
  					 "title": "sunt aut facere repellat provident occaecati excepturi optio reprehenderit",
  					 "body": "quia et suscipit\nsuscipit recusandae consequuntur expedita et cum\nreprehenderit molestiae ut ut quas totam\nnostrum rerum est autem sunt rem eveniet architecto"
+<<<<<<< HEAD
 					}
+=======
+					} 
+>>>>>>> WIP
 
                 data = double
 	                allow(data).to receive(:test).and_return({

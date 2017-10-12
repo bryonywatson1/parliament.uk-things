@@ -31,11 +31,5 @@ module HybridBillsHelper
     SESSION_KEYS.each do |key|
       session.delete(key.to_sym)
     end
-  end
-
-	module API
-		PETITION_URL = ENV['HYBRID_BILLS_PETITION_URL']
-		PETITION_DOCUMENT_URL = ENV['HYBRID_BILLS_PETITION_DOCUMENT_URL']
-		HYBRID_BILLS_TOKEN = ENV['HYBRID_TOKEN']
 	end
 end

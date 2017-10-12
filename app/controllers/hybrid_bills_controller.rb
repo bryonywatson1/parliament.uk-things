@@ -27,7 +27,6 @@ class HybridBillsController < ApplicationController
   	raise ActionController::RoutingError, 'invalid petition id' unless validate_petition(params[:bill_id])
 
   	@petition = params[:bill_id]
-
     @hybrid_bill = HybridBill.new
 
 
@@ -38,34 +37,11 @@ class HybridBillsController < ApplicationController
       create_session
       return render template if template
     end
-  end
-
-  def new
-  end
-
-  def create
-  end
-
-  # def test
-  # 	#response = Parliament::Request::UrlRequest.new(base_url: TEST).get.response.body
-  # 	# binding.pry
-  # 	# hybridbill_decorator = HybridBillDecorator.new(Parliament::Request::UrlRequest.new(base_url: TEST))
-  # 	# p hybridbill_decorator.get_response
-  # 	#require 'json'
-  # 	# r =  HybridBillsHelper.get_response(HybridBillsHelper::API::TEST)
-  # 	# p r
-  # 	#binding.pry
-  # 	#response = JSON.parse(r)
-
-  # end
 
   private
 
   def validate_petition(id)
-  	id == 'hs2'
-  end
-
-  
-
+  	id == 'hs2' 
+  end	
 end
 

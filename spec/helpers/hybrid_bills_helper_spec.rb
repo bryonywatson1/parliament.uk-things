@@ -25,4 +25,3 @@ RSpec.describe HybridBillsHelper do
   #   end
   # end
 end
-
