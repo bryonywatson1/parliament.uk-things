@@ -7,6 +7,7 @@ require 'pry-nav'
 RSpec.describe HybridBillsController do
 
 <<<<<<< HEAD
+<<<<<<< HEAD
 	before(:each) do
 		WebMock.allow_net_connect!
         VCR.turn_off!
@@ -15,12 +16,19 @@ RSpec.describe HybridBillsController do
 	context 'hybrid bill index page' do
 =======
 	before(:each) do 
+=======
+	before(:each) do
+>>>>>>> WIP Restructure
 		WebMock.allow_net_connect!
         VCR.turn_off!
-    end    
+    end
 
+<<<<<<< HEAD
 	context "hybrid bill index page" do 
 >>>>>>> WIP
+=======
+	context 'hybrid bill index page' do
+>>>>>>> WIP Restructure
 			describe 'GET index' do
 			    before(:each) do
 			      get :index
@@ -37,10 +45,14 @@ RSpec.describe HybridBillsController do
 	end
 
 <<<<<<< HEAD
+<<<<<<< HEAD
 	context 'hybrid bill show page' do
 =======
 	context "hybrid bill show page" do 
 >>>>>>> WIP
+=======
+	context 'hybrid bill show page' do
+>>>>>>> WIP Restructure
 
 			describe 'GET show' do
 			    before(:each) do
@@ -54,6 +66,9 @@ RSpec.describe HybridBillsController do
 			    it 'renders the show template' do
 			      expect(response).to render_template('show')
 <<<<<<< HEAD
+<<<<<<< HEAD
+=======
+>>>>>>> WIP Restructure
           end
 
         context 'with a stage' do
@@ -76,6 +91,7 @@ RSpec.describe HybridBillsController do
           end
         end
       end
+<<<<<<< HEAD
 	end
 
 	context "hybrid bill test page" do
@@ -92,16 +108,28 @@ RSpec.describe HybridBillsController do
 			
 				it 'should match the data ' do 
 >>>>>>> WIP
+=======
+	end
+
+	context "hybrid bill test page" do
+			describe '#test' do
+
+				it 'should match the data ' do
+>>>>>>> WIP Restructure
 					data = {
  					 "userId": 1,
   					"id": 1,
  					 "title": "sunt aut facere repellat provident occaecati excepturi optio reprehenderit",
  					 "body": "quia et suscipit\nsuscipit recusandae consequuntur expedita et cum\nreprehenderit molestiae ut ut quas totam\nnostrum rerum est autem sunt rem eveniet architecto"
 <<<<<<< HEAD
+<<<<<<< HEAD
 					}
 =======
 					} 
 >>>>>>> WIP
+=======
+					}
+>>>>>>> WIP Restructure
 
                 data = double
 	                allow(data).to receive(:test).and_return({

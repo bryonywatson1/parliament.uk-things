@@ -1,13 +1,6 @@
 module HybridBillsHelper
-
-  HybridBillPetitionAgent, HybridBillPetitioner = {}, {}
-
   SESSION_SEPARATOR = 'hybrid_bills_submission'
-  SESSION_KEYS = %W(CommitteeBusinessId HyBridBillPetitionId DocumentData) 
-  SESSION_KEYS_PETITIONER = %W(HybridBillPetitioner[GroupName] HybridBillPetitioner[SubmitterType] HybridBillPetitioner[OrganisationName] HybridBillPetitioner[FirstName] HybridBillPetitioner[Surname] HybridBillPetitioner[Title] HybridBillPetitioner[JobTitle] HybridBillPetitioner[AddressLine1] HybridBillPetitioner[AddressLine2] HybridBillPetitioner[Town] HybridBillPetitioner[County] HybridBillPetitioner[Country] HybridBillPetitioner[Postcode] HybridBillPetitioner[Email] HybridBillPetitioner[Telephone] HybridBillPetitioner[ShouldBeContacted]) 
-  SESSION_KEYS_AGENT = %W(HybridBillPetitionAgent[ShouldBeContacted] HybridBillPetitionAgent[AgentType] HybridBillPetitionAgent[FirstName] HybridBillPetitionAgent[Surname] HybridBillPetitionAgent[Title] HybridBillPetitionAgent[JobTitle] HybridBillPetitionAgent[AddressLine1] HybridBillPetitionAgent[AddressLine2] HybridBillPetitionAgent[Town] HybridBillPetitionAgent[County] HybridBillPetitionAgent[Country] HybridBillPetitionAgent[Postcode] HybridBillPetitionAgent[Email] HybridBillPetitionAgent[Telephone] )
-
-  SESSION_KEYS.concat(SESSION_KEYS_PETITIONER, SESSION_KEYS_AGENT)
+  SESSION_KEYS = %W(type accept FirstName Surname Title JobTitle AddressLine1 AddressLine2)
 
   def create_session
     session[SESSION_SEPARATOR] = {} if session[SESSION_SEPARATOR].nil?
@@ -31,5 +24,11 @@ module HybridBillsHelper
     SESSION_KEYS.each do |key|
       session.delete(key.to_sym)
     end
+  end
+
+	module API
+		PETITION_URL = ENV['HYBRID_BILLS_PETITION_URL']
+		PETITION_DOCUMENT_URL = ENV['HYBRID_BILLS_PETITION_DOCUMENT_URL']
+		HYBRID_BILLS_TOKEN = ENV['HYBRID_TOKEN']
 	end
 end

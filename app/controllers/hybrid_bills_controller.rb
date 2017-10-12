@@ -29,19 +29,21 @@ class HybridBillsController < ApplicationController
   	@petition = params[:bill_id]
     @hybrid_bill = HybridBill.new
 
-
     if params[:step]
       template = STEP_TEMPLATES[params[:step].to_sym]
       template = template[params[:type].to_sym] if params[:type]
 
-      create_session
       return render template if template
     end
 
   private
 
   def validate_petition(id)
-  	id == 'hs2' 
-  end	
+  	id == 'hs2'
+  end
+
+  def add_to_params(params)
+     HybridBillsHelper::HybridBillsSessionStore.new(params).set
+  end
 end
 
