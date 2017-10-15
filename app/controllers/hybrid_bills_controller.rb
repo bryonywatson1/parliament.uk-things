@@ -41,9 +41,5 @@ class HybridBillsController < ApplicationController
   def validate_petition(id)
   	id == 'hs2'
   end
-
-  def add_to_params(params)
-     HybridBillsHelper::HybridBillsSessionStore.new(params).set
-  end
 end
 
