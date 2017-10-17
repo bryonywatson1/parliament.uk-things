@@ -4,5 +4,4 @@ class HybridBillIndividualSubmissionValidator < ActiveModel::Validator
 
     end
     
-end	
-
+end

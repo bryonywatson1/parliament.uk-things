@@ -2,7 +2,6 @@ require 'pry'
 require 'pry-nav'
 require 'rails_helper'
 
-
 RSpec.describe 'HybridBillIndividualSubmissionValidator' do 
 
 	context 'for individual path' do 
