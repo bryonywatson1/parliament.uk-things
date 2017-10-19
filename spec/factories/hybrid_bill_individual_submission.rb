@@ -7,8 +7,7 @@ FactoryGirl.define do
     address_2 "westminister"
     postcode "WC2 7TL"
     country "UK"
-    telephone "0207 520 0890"
-    email "testing@gmail.com"
+    email "sconkers@gmail.com"
     receive_updates true
   end
 end
