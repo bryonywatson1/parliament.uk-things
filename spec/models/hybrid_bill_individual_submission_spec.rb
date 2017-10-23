@@ -8,7 +8,7 @@ RSpec.describe HybridBillIndividualSubmission, :type => :model do
 		  	expect(hybrid_bill_individual_model).to be_valid
 		  end	
 
-		    it "is invalid" do
+		  it "is invalid" do
 		    hybrid_bill_individual_model = build(:hybrid_bill_individual_submission, submitter_type: 17)
 		  	expect(hybrid_bill_individual_model).not_to be_valid
 		  end	

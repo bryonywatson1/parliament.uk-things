@@ -1,4 +1,4 @@
-FactoryGirl.define do 
+FactoryGirl.define do
   factory :hybrid_bill_base_submission do
     submitter_type 1
     first_name "susan"
@@ -7,7 +7,6 @@ FactoryGirl.define do
     address_2 "westminister"
     postcode "WC2 7TL"
     country "UK"
-    email "sconkers@gmail.com"
     telephone "0207 520 0890"
     should_be_contacted false
     committee_business_id 255
