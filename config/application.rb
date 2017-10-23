@@ -20,6 +20,12 @@ require 'parliament/engine'
 require 'pugin'
 require 'parliament/utils'
 
+<<<<<<< HEAD
+=======
+# Temporarily require the stopgap gem
+#require 'stopgap_13632'
+
+>>>>>>> WIP custom validation
 module MembersPrototype
   class Application < Rails::Application
     # Rewrite trailing slashes
