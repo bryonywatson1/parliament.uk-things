@@ -1,5 +1,4 @@
 require 'rails_helper'
-#require 'base64'
 
 RSpec.describe HybridBillDocument do
 
