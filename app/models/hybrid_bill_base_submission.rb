@@ -1,7 +1,7 @@
 class HybridBillBaseSubmission
 	include ActiveModel::Validations
 
-	attr_accessor :on_behalf_of, :first_name, :last_name, :address_1, :address_2, :postcode, :country, :telephone, :receive_updates
+	attr_accessor :on_behalf_of, :first_name, :last_name, :address_1, :address_2, :postcode, :country, :telephone, :receive_updates, :email
 
 	validates :first_name, presence: true
 	validates :last_name, presence: true
