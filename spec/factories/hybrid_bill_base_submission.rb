@@ -1,7 +1,7 @@
 FactoryBot.define do
   factory :hybrid_bill_base_submission do
     first_name "su"
-    last_name "conkers"
+    surname "conkers"
     address_1 "millbank 7"
     postcode "WC2 7TL"
     country "UK"

@@ -1,10 +1,11 @@
 require 'rails_helper'
 
-RSpec.describe HybridBillBaseSubmission, :type => :model do 
-	context "model" do 
-		  it "is valid" do 
-		    hybrid_bill_base_model = build(:hybrid_bill_base_submission)
-		  	expect(hybrid_bill_base_model).to be_valid
-		  end	
-    end
-end	
+RSpec.describe HybridBillBaseSubmission do
+  it 'is valid' do
+    expect(build(:hybrid_bill_base_submission)).to be_valid
+  end
+
+  it 'is invalid' do
+    expect(build(:hybrid_bill_base_submission, receive_updates: nil)).not_to be_valid
+  end
+end
