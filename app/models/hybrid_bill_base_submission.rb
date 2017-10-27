@@ -1,5 +1,4 @@
 class HybridBillBaseSubmission
-
   include ActiveModel::Model
   include ActivePoro::Model
 
@@ -15,5 +14,6 @@ class HybridBillBaseSubmission
   validates :receive_updates, inclusion: { in: [true, false] }
 
   has_one :hybrid_bill_agent
+  has_one :hybrid_bill_document
 
 end
