@@ -1,4 +1,5 @@
 class HybridBillBaseSubmission
+
   include ActiveModel::Model
   include ActivePoro::Model
 
@@ -7,12 +8,12 @@ class HybridBillBaseSubmission
   validates :first_name, presence: true
   validates :surname, presence: true
   validates :address_1, presence: true
-  validates :email, presence: true
+  validates_format_of :email, presence: true, with: EMAIL_REGEX
   validates :telephone, presence: true
   validates :postcode, presence: true
   validates :country, presence: true
   validates :receive_updates, inclusion: { in: [true, false] }
 
   has_one :hybrid_bill_agent
-  
+
 end

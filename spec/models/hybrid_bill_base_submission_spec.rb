@@ -6,6 +6,6 @@ RSpec.describe HybridBillBaseSubmission do
   end
 
   it 'is invalid' do
-    expect(build(:hybrid_bill_base_submission, receive_updates: nil)).not_to be_valid
+    expect(build(:hybrid_bill_base_submission, email: "sugar@@test.com")).not_to be_valid
   end
 end
