@@ -40,20 +40,13 @@
       = render 'current_roles'
 
     - unless @history.nil? || @history[:years].empty?
-      .dropdown
-        .dropdown__toggle
-          %h3= link_to "#{t('.show_history')}", "#"
-        .dropdown__content
-          .timeline
-            - unless @history.nil? || @history[:current].empty?
-              %h2= "#{t('.held_currently')}"
-              %ul.list--block
-                = render 'timeline_roles', timeline_roles: @history[:current]
-            - @history[:years].keys.sort.each do |year|
-              %h2= "#{t('.held_in')} #{year} #{t('.years')}"
-              %ul.list--block
-                = render 'timeline_roles', timeline_roles: @history[:years][year]
-            - if @history && @history[:start]
-              %h2= @history[:start].year
+      - if @current_incumbency && @current_party_membership
+        .dropdown
+          .dropdown__toggle
+            %h3= link_to "#{t('.show_history')}", "#"
+          .dropdown__content
+            = render 'timeline'
+      - else
+        = render 'timeline' 
 
 = render 'related_links'
