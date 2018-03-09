@@ -12,6 +12,7 @@ class PeopleController < ApplicationController
     @person, @seat_incumbencies, @committee_memberships, @government_incumbencies, @opposition_incumbencies = Parliament::Utils::Helpers::FilterHelper.filter(@request, 'Person', 'SeatIncumbency', 'FormalBodyMembership', 'GovernmentIncumbency', 'OppositionIncumbency')
 
     @person = @person.first
+  
 
     @current_party_membership = @person.current_party_membership
 
@@ -20,10 +21,9 @@ class PeopleController < ApplicationController
 
     roles = []
     roles += incumbencies
-    roles += @committee_memberships.to_a if Pugin::Feature::Bandiera.show_committees?
-    roles += @government_incumbencies.to_a if Pugin::Feature::Bandiera.show_government_roles?
-    roles += @opposition_incumbencies.to_a if Pugin::Feature::Bandiera.show_opposition_roles?
-
+    roles += @committee_memberships.to_a
+    roles += @government_incumbencies.to_a
+    roles += @opposition_incumbencies.to_a
     @sorted_incumbencies = Parliament::NTriple::Utils.sort_by({
       list:             @person.incumbencies,
       parameters:       [:end_date],
