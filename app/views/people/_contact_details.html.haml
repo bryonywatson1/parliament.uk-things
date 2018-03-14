@@ -1,5 +1,5 @@
 - if @person.current_mp? || @person.current_lord?
-  - if @current_incumbency.contact_points.empty?
+  - if @current_incumbency.contact_points.empty? || @current_incumbency.contact_points.all? {|contact_point| contact_point.postal_addresses.empty? }
     %p= t('.empty_contact_details')
   - else
     %dl.list--definition
@@ -15,8 +15,9 @@
         - if contact_point.postal_addresses.present?
           %dt
             = t('contact_points.address').capitalize + ": "
-          - contact_point.postal_addresses.each do |postal_address|
-            %dd= postal_address.full_address
+          - if contact_point.postal_addresses.present?
+            - contact_point.postal_addresses.each do |postal_address|
+              %dd= postal_address.full_address
         - if @current_incumbency.contact_points.length > 1
           - unless contact_point.equal?(@current_incumbency.contact_points.last)
             .line-break--sm
