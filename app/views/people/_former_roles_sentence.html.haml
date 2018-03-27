@@ -1,0 +1,2 @@
+%p.lead
+  = "#{@person.display_name} began work in Parliament in #{l(@sorted_incumbencies.first.start_date, format: :year_only)} and finished in #{l(@sorted_incumbencies.last.end_date, format: :year_only)}."

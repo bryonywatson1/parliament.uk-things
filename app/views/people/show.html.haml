@@ -24,8 +24,11 @@
       - if @person.image_id(show_placeholder:false)
         = render 'image'
 
-    - if @current_roles
+    - if @history && @history[:current].any?
       = render 'current_roles_sentence', current_roles: @current_roles
+    - elsif @history && @history[:current].empty?
+      = render 'former_roles_sentence', former_roles: @history
+
 
 - if @current_incumbency && @current_party_membership
   %section
