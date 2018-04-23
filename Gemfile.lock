@@ -321,7 +321,7 @@ DEPENDENCIES
   haml
   listen (>= 3.0.5, < 3.2)
   parallel_tests
-  parliament-grom-decorators (~> 0.23)
+  parliament-grom-decorators (~> 0.24)
   parliament-ntriple (~> 0.2)
   parliament-routes!
   parliament-ruby (= 1.0.0.pre6)
