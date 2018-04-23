@@ -1,0 +1,30 @@
+%h2= 'Question title:'
+= 'Question '
+= @question.uin
+%h2= 'Question text:'
+= @question.text
+%h2= 'Asked at:'
+= @question.asked_at_date
+%h2= 'Asking person full name:'
+= @asking_person.full_name
+%h2= 'Asking person role:'
+= t('.mp_for')
+= @constituency.name
+- if !@asking_person_seat_incumbency.current?
+  = "until #{@asking_person_seat_incumbency.end_date}"
+%h2= 'Answer text:'
+= @answer.text
+%h2= 'Answer given date:'
+=  @answer.answer_given_date
+%h2= 'Answering person full name:'
+= @answering_person.full_name
+%h2= 'Answering body group name (department name):'
+= @answering_body.name
+%h2= 'Answering person role:'
+= @government_position.name
+- if !@answering_person_government_incumbency.current?
+  = "until #{@answering_person_government_incumbency.end_date}"
+%h2= 'Answering body group name (department name):'
+= @answering_body.name
+%h2= 'Answering person role:'
+= @government_position.name
