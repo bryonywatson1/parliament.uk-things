@@ -25,7 +25,6 @@ gem 'geosparql_to_geojson', '~> 0.2'
 # Parliament routing
 gem 'parliament-routes', '~> 0.6'
 
-
 # Parliament-Utils gem for generic set up and configuration
 gem 'parliament-utils', '~> 0.8', require: false
 
