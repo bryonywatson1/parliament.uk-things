@@ -1,116 +1,116 @@
 require 'rails_helper'
 
 RSpec.describe 'questions/show', vcr: true do
-  context 'question' do
-    it 'will render the correct question title' do
-      assign(:question,
-        double(:question,
-          uin: '123456',
-          text: 'Question text',
-          asked_at_date: Time.zone.now - 2.months))
+  before do
+  assign(:question,
+    double(:question,
+      uin: '123456',
+      asked_at_date: Time.zone.now - 5.months,
+      text: 'Question text1'))
+
+  assign(:asking_person,
+    double(:asking_person,
+      full_name: 'Name1 Name2'))
+
+  assign(:answering_person,
+    double(:answering_person,
+      full_name: 'Name3 Name4'))
+
+  assign(:constituency,
+    double(:constituency,
+      name: 'Kingston upon Thames'))
+
+  assign(:answering_body,
+    double(:answering_body,
+      name: 'Department of Health'))
+
+  assign(:answer,
+    double(:answer,
+      text: 'Answer text1',
+      answer_given_date: Time.zone.now - 4.months))
+
+  assign(:answering_person_government_incumbency,
+    double(:answering_person_government_incumbency,
+    current?:  false,
+    end_date:  Time.zone.now - 3.months))
+
+    assign(:asking_person_seat_incumbency,
+      double(:asking_person_seat_incumbency,
+      current?:  false,
+      end_date:  Time.zone.now - 2.months))
+
+  assign(:government_position,
+    double(:government_position,
+      name: 'Minister'))
+
       render
-      expect(rendered).to match(/Question 123456/)
+
+    end
+
+
+  context 'question' do
+    it 'will render the correct question uin' do
+      expect(rendered).to match(/123456/)
     end
 
     it 'will render the correct question text' do
-      assign(:question,
-        double(:question,
-          uin: '123456',
-          text: 'Question text',
-          asked_at_date: Time.zone.now - 2.months))
-      render
-      expect(rendered).to match(/Question text/)
+      expect(rendered).to match(/Question text1/)
     end
 
     it 'will render the correct question asked at date' do
-      assign(:question,
-        double(:question,
-          uin: '123456',
-          text: 'Question text',
-          asked_at_date: Time.zone.now - 2.months))
-      render
-      expect(rendered).to match(/1 Mar 2018/)
+      expect(rendered).to match(/24 Nov 2017/)
     end
   end
 
   context 'asking_person' do
     it 'will render the correct asking person full name' do
-      assign(:asking_person,
-        double(:asking_person,
-          full_name: 'First Name Last Name'))
-      render
-      expect(rendered).to match(/First Name Last Name/)
+      expect(rendered).to match(/Name1 Name2/)
+    end
+  end
+
+  context 'asking_person_seat_incumbency' do
+    it 'will render the correct asking person incumbency end date' do
+      expect(rendered).to match(/until 24 Feb 2018/)
     end
   end
 
   context 'constituency' do
     it 'will render the correct asking person constituency' do
-      assign(:constituency,
-        double(:constituency,
-          name: 'Kingston upon Thames'))
-      render
-      expect(rendered).to match(/Mp for Kingston upon Thames/)
+      expect(rendered).to match(/Kingston upon Thames/)
     end
   end
 
   context 'answering_body' do
     it 'will render the correct answering body' do
-      assign(:answering_body,
-        double(:answering_body,
-          name: 'Department for Health'))
-      render
-      expect(rendered).to match(/Department for Health/)
+      expect(rendered).to match(/Department of Health/)
     end
   end
 
   context 'answer' do
     it 'will render the correct answer text' do
-      assign(:answer,
-        double(:answer,
-          text: 'Answer text',
-          answer_given_date: Time.zone.now - 2.months))
-      render
-      expect(rendered).to match(/Answer text/)
+      expect(rendered).to match(/Answer text1/)
     end
 
     it 'will render the correct answer given date' do
-      assign(:answer,
-        double(:answer,
-          text: 'Answer text',
-          answer_given_date: Time.zone.now - 2.months))
-      render
-      expect(rendered).to match(/1 Apr 2018/)
+      expect(rendered).to match(/24 Dec 2017/)
     end
   end
 
   context 'answering_person' do
     it 'will render the correct answering person full name' do
-      assign(:answering_person,
-        double(:answering_person,
-          full_name: 'Jo Smith'))
-      render
-      expect(rendered).to match(/Jo Smith/)
+      expect(rendered).to match(/Name3 Name4/)
     end
   end
 
   context 'government_position' do
     it 'will render the correct government position' do
-      assign(:government_position,
-        double(:government_position,
-          name: 'Minister'))
-      render
-      expect(rendered).to match(/Minister/)
+      expect(rendered).to match(/Minister for Department of Health/)
     end
   end
 
   context 'answering_person_government_incumbency' do
     it 'will render the correct answering person government incumbency end date' do
-      assign(:answering_person_government_incumbency,
-        double(:answering_person_government_incumbency,
-        current?:  false,
-        end_date:  Time.zone.now - 2.months))
-      render
-      expect(rendered).to match(/Minister for Department of Health until 2018/)
+      expect(rendered).to match(/until 24 Jan 2018/)
     end
   end
 

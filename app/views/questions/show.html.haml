@@ -11,7 +11,7 @@
 = t('.mp_for')
 = @constituency.name
 - if !@asking_person_seat_incumbency.current?
-  = "until #{l(@asking_person_seat_incumbency, format: :default)}"
+  = "until #{l(@asking_person_seat_incumbency.end_date, format: :default)}"
 %h2= 'Answering body group name (department name):'
 = @answering_body.name
 - if @answer.text
