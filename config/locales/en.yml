@@ -450,7 +450,15 @@ en:
   # questions translations
   questions:
     show:
+      answer: 'answer'
+      answer_expected_from: 'answer expected from the'
       mp_for: 'MP for'
+      not_answered: 'not yet answered'
+      question: 'question'
+      question_for: 'question for'
+    written_q_a:
+      asked_on: 'asked on'
+      by: 'by'
   # people translations
   people:
     index:
