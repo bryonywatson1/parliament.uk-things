@@ -6,15 +6,15 @@ class QuestionsController < ApplicationController
   }.freeze
 
   def show
-    @question, @answer, @answering_body, @answering_person_government_incumbency, @asking_person_seat_incumbency, @constituency, @government_position = Parliament::Utils::Helpers::FilterHelper.filter(@request, 'Question', 'Answer', 'Group', 'GovernmentIncumbency', 'SeatIncumbency', 'ConstituencyGroup', 'GovernmentPosition')
+    @question, @answer = Parliament::Utils::Helpers::FilterHelper.filter(@request, 'Question', 'Answer')
     @question = @question.first
     @answer = @answer.first
-    @constituency = @constituency.first
-    @asking_person_seat_incumbency = @asking_person_seat_incumbency.first
-    @answering_person_government_incumbency = @answering_person_government_incumbency.first
-    @government_position = @government_position.first
-    @answering_body = @answering_body.first
     @asking_person = @question.asking_person
     @answering_person = @answer.answering_person
+    @asking_person_seat_incumbency = @asking_person.seat_incumbencies.first
+    @constituency = @asking_person_seat_incumbency.constituency
+    @answering_person_government_incumbency = @answering_person.government_incumbencies.first
+    @government_position = @answering_person_government_incumbency.government_position
+    @answering_body = @question.answering_body_allocation.answering_body
   end
 end

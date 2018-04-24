@@ -2,51 +2,49 @@ require 'rails_helper'
 
 RSpec.describe 'questions/show', vcr: true do
   before do
-  assign(:question,
-    double(:question,
-      uin: '123456',
-      asked_at_date: Time.zone.now - 5.months,
-      text: 'Question text1'))
+    assign(:question,
+      double(:question,
+        uin: '123456',
+        asked_at_date: Time.zone.now - 5.months,
+        text: 'Question text1'))
 
-  assign(:asking_person,
-    double(:asking_person,
-      full_name: 'Name1 Name2'))
+    assign(:asking_person,
+      double(:asking_person,
+        full_name: 'Name1 Name2'))
 
-  assign(:answering_person,
-    double(:answering_person,
-      full_name: 'Name3 Name4'))
+    assign(:answering_person,
+      double(:answering_person,
+        full_name: 'Name3 Name4'))
 
-  assign(:constituency,
-    double(:constituency,
-      name: 'Kingston upon Thames'))
+    assign(:constituency,
+      double(:constituency,
+        name: 'Kingston upon Thames'))
 
-  assign(:answering_body,
-    double(:answering_body,
-      name: 'Department of Health'))
+    assign(:answering_body,
+      double(:answering_body,
+        name: 'Department of Health'))
 
-  assign(:answer,
-    double(:answer,
-      text: 'Answer text1',
-      answer_given_date: Time.zone.now - 4.months))
+    assign(:answer,
+      double(:answer,
+        text: 'Answer text1',
+        answer_given_date: Time.zone.now - 4.months))
 
-  assign(:answering_person_government_incumbency,
-    double(:answering_person_government_incumbency,
-    current?:  false,
-    end_date:  Time.zone.now - 3.months))
+    assign(:answering_person_government_incumbency,
+      double(:answering_person_government_incumbency,
+      current?:  false,
+      end_date:  Time.zone.now - 3.months))
 
     assign(:asking_person_seat_incumbency,
       double(:asking_person_seat_incumbency,
       current?:  false,
       end_date:  Time.zone.now - 2.months))
 
-  assign(:government_position,
-    double(:government_position,
-      name: 'Minister'))
+    assign(:government_position,
+      double(:government_position,
+        name: 'Minister'))
 
-      render
-
+        render
     end
-
 
   context 'question' do
     it 'will render the correct question uin' do
@@ -113,39 +111,4 @@ RSpec.describe 'questions/show', vcr: true do
       expect(rendered).to match(/until 24 Jan 2018/)
     end
   end
-
-
-
-
-
-
-  # context '@party.member_count > 0' do
-  #   before do
-  #     assign(:party, double(:party, name: 'Conservative', graph_id: 'jF43Jxoc', member_count: 10, current?: true))
-  #     render
-  #   end
-  #
-  #   context 'links' do
-  #     it 'will render link to party_members_current_path' do
-  #       expect(rendered).to have_link('Current members', href: party_members_current_path('jF43Jxoc'))
-  #     end
-  #
-  #     it 'will render link description' do
-  #       expect(rendered).to match(/View all current Conservative members/)
-  #     end
-  #   end
-  # end
-  #
-  # context '@party.member_count == 0' do
-  #   before do
-  #     assign(:party, double(:party, name: 'Conservative', graph_id: 'jF43Jxoc', member_count: 0, current?: false))
-  #     render
-  #   end
-  #
-  #   context 'links' do
-  #     it 'will render link to party_members_path' do
-  #       expect(rendered).to have_link('View all former Conservative members', href: party_members_path('jF43Jxoc'))
-  #     end
-  #   end
-  # end
 end
