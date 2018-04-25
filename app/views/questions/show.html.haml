@@ -1,30 +1,19 @@
-%h2= 'Question title:'
-= 'Question '
-= @question.uin
-%h2= 'Question text:'
-= @question.text
-%h2= 'Asked at:'
-= "#{l(@question.asked_at_date, format: :default)}"
-%h2= 'Asking person full name:'
-= @asking_person.full_name
-%h2= 'Asking person role:'
-= t('.mp_for')
-= @constituency.name
-- if !@asking_person_seat_incumbency.current?
-  = "until #{l(@asking_person_seat_incumbency.end_date, format: :default)}"
-%h2= 'Answering body group name (department name):'
-= @answering_body.name
-- if @answer.text
-  %h2= 'Answer text:'
-  = @answer.text
-- if @answer.answer_given_date
-  %h2= 'Answer given date:'
-  = "#{l(@answer.answer_given_date, format: :default)}"
-- if @answering_person
-  %h2= 'Answering person full name:'
-  = @answering_person.full_name
-- if @government_position
-  %h2= 'Answering person role:'
-  = "#{@government_position.name} for #{@answering_body.name}"
-  - if !@answering_person_government_incumbency.current?
-    = "until #{l(@answering_person_government_incumbency.end_date, format: :default)}"
+.section--primary
+  .container
+    %h1= title(t(".question").capitalize + " " + @question.uin)
+    %p.lead= t(".question_for").capitalize + " " + @answering_body.name
+
+%section{ id: "content", tabindex: "0" }
+  .container
+
+    -# Question
+    .block--border__bottom
+      = render partial: "written_q_a", locals: { title: t(".question").capitalize, body: @question.text, person: @asking_person, position: t(".mp_for"), department: @constituency.name, incumbency: @asking_person_seat_incumbency, date: @question.asked_at_date.strftime("%d %B %Y") }
+
+    -# Answer
+    .block--border__bottom
+      - if @answer.text
+        = render partial: "written_q_a", locals: { title: t(".answer").capitalize, body: @answer.text, person: @answering_person, position: @government_position.name, department: @answering_body.name, incumbency: @answering_person_government_incumbency, date: @answer.answer_given_date.strftime("%d %B %Y") }
+      - else
+        %h2= t(".not_answered").capitalize
+        %p= t(".answer_expected_from").capitalize + @answering_body.name

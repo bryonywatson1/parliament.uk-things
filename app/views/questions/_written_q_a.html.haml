@@ -1,0 +1,27 @@
+-# Local variables
+- $title_is_question = title == "Question" || title == "question";
+
+-# Main
+%h2= title
+
+- if $title_is_question
+  %p= body
+- else
+  = body.html_safe
+
+.card--small
+  %h3= t(".asked_on").capitalize + " " + date + " " + t(".by")
+  %figure.round
+    = link_to(person_path(person.graph_id)) do
+      %picture
+        - if person.image_id
+          %img{ src: "#{ENV['IMAGE_SERVICE_URL']}/#{person.image_id}.jpeg?crop=CU_1:1&width=260&quality=80", alt: "#{person.full_name} 260 by 260 pixels" }
+        - else
+          %img{ src: "https://s3-eu-west-1.amazonaws.com/web1live.pugin-website/images/placeholder_members_image.png" }
+  .details
+    %p
+      = link_to(person.full_name, person_path(person.graph_id))
+    %p
+      = position + ($title_is_question ? " " : ", ") + department
+      - if !incumbency.current?
+        = "until " + incumbency.end_date.strftime("%d %B %Y")
